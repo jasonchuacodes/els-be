@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FollowingController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerificationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,5 +31,9 @@ Route::post('/verification-notification', [VerificationController::class, 'resen
 
 // Private
 Route::middleware('auth:sanctum')->group(function() {
+    Route::get('/profile/{id}', [UserController::class, 'index']);    
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/follow/{id}', [FollowingController::class, 'follow']);
+    Route::get('/followers', [FollowingController::class, 'followers']);
+    Route::get('/followings', [FollowingController::class, 'followings']);
 });
