@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 // Public Routes
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::get('/users', [UserController::class, 'index']);    
 
 Route::get('/verify', [VerificationController::class, 'verify'])
     ->name('verification.verify');
@@ -31,7 +32,7 @@ Route::post('/verification-notification', [VerificationController::class, 'resen
 
 // Private
 Route::middleware('auth:sanctum')->group(function() {
-    Route::get('/profile/{id}', [UserController::class, 'index']);    
+    Route::get('/users/{id}', [UserController::class, 'show']);    
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/follow/{id}', [FollowingController::class, 'follow']);
     Route::get('/followers', [FollowingController::class, 'followers']);

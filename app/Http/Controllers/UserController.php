@@ -12,12 +12,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
         //
-        $user = User::findOrFail($id);
-        
-        return response()->json($user);
+        $users = User::all();
+
+        return response()->json($users);
     }
 
     /**
@@ -40,6 +40,9 @@ class UserController extends Controller
     public function show($id)
     {
         //
+        $user = User::findOrFail($id);
+        
+        return response()->json($user);
     }
 
     /**
