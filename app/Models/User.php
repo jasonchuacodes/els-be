@@ -22,6 +22,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'last_name',
         'email',
         'password',
+        'is_admin'
     ];
 
     /**
@@ -43,4 +44,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    public function followings()
+    {
+        $this->hasMany(Following::class);
+    }
 }
