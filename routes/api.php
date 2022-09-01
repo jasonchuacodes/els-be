@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 // Public Routes
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -34,7 +33,9 @@ Route::post('/verification-notification', [VerificationController::class, 'resen
 Route::middleware('auth:sanctum')->group(function() {
     Route::get('/users/{id}', [UserController::class, 'show']);    
     Route::post('/logout', [AuthController::class, 'logout']);
-    Route::get('/follow/{id}', [FollowingController::class, 'follow']);
-    Route::get('/followers', [FollowingController::class, 'followers']);
-    Route::get('/followings', [FollowingController::class, 'followings']);
+    Route::post('/{id}/follow', [FollowingController::class, 'follow']);
+    Route::get('/{id}/is-folowing', [FollowingController::class, 'isFollowing']);
+    Route::post('/{id}/unfollow', [FollowingController::class, 'unfollow']);
+    Route::get('/{id}/followers', [FollowingController::class, 'followers']);
+    Route::get('/{id}/followings', [FollowingController::class, 'followings']);
 });
