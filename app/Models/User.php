@@ -46,6 +46,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function followings()
     {
-        $this->hasMany(Following::class);
+        return $this->hasMany(Following::class);
+    }
+    public function quizlogs()
+    {
+        return $this->hasMany(Quizlog::class);
     }
 }

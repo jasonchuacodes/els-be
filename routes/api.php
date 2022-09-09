@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FollowingController;
+use App\Http\Controllers\LessonController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerificationController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 // Public Routes
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-Route::get('/users', [UserController::class, 'index']);    
+Route::get('/users', [UserController::class, 'index']);
 
 Route::get('/verify', [VerificationController::class, 'verify'])
     ->name('verification.verify');
@@ -30,12 +30,21 @@ Route::post('/verification-notification', [VerificationController::class, 'resen
     ->name('verification.send');
 
 // Private
-Route::middleware('auth:sanctum')->group(function() {
-    Route::get('/users/{id}', [UserController::class, 'show']);    
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/users/{id}', [UserController::class, 'show']);
     Route::post('/logout', [AuthController::class, 'logout']);
+
+    // FOLLOW
     Route::post('/{id}/follow', [FollowingController::class, 'follow']);
     Route::get('/{id}/is-following', [FollowingController::class, 'isFollowing']);
     Route::post('/{id}/unfollow', [FollowingController::class, 'unfollow']);
     Route::get('/{id}/followers', [FollowingController::class, 'followers']);
     Route::get('/{id}/followings', [FollowingController::class, 'followings']);
-});
+
+    // LESSON
+    Route::post('/quiz/attempt', [LessonController::class, 'attemptQuiz']);
+    Route::get('/quiz/questions', [LessonController::class, 'fetchQuizQuestions']);
+    Route::get('/quiz/question/choices', [LessonController::class, 'fetchQuestionChoices']);
+    Route::get('/quiz/results', [LessonController::class, 'fetchQuizResults']);
+    Route::post('/question/answer', [LessonController::class, 'answerQuestionItem']);
+}); 
