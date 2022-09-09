@@ -42,15 +42,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/{id}/followings', [FollowingController::class, 'followings']);
 
     // LESSON
-    Route::get('/all-quizzes', [LessonController::class, 'fetchQuizzes']);
-    Route::get('/quiz/{id}', [LessonController::class, 'fetchQuiz']);
-    Route::get('/all-questions', [LessonController::class, 'fetchAllQuestions']);
-    Route::get('/quiz/{id}/questions', [LessonController::class, 'fetchQuizQuestions']);
-    Route::get('/question/{id}', [LessonController::class, 'fetchQuestion']);
-
-    Route::get('/choices', [LessonController::class, 'fetchChoices']);
-    Route::get('/answers', [LessonController::class, 'fetchAnswers']);
-    Route::get('/check', [LessonController::class, 'quizloganswers']);
-
-    Route::get('/quiz/{id}/results', [LessonController::class, 'fetchQuizResults']);
-});
+    Route::post('/quiz/attempt', [LessonController::class, 'attemptQuiz']);
+    Route::get('/quiz/questions', [LessonController::class, 'fetchQuizQuestions']);
+    Route::get('/quiz/question/choices', [LessonController::class, 'fetchQuestionChoices']);
+    Route::get('/quiz/results', [LessonController::class, 'fetchQuizResults']);
+    Route::post('/question/answer', [LessonController::class, 'answerQuestionItem']);
+}); 

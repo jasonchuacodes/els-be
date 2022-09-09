@@ -11,13 +11,8 @@ class Choice extends Model
 
     protected $fillable = ['is_correct', 'choice'];
 
-    public function question()
+    public function question() 
     {
-        return $this->belongsTo(Question::class);
-    }
-
-    public function answers()
-    {
-        return $this->hasMany(Answer::class);
+        return  $this->belongsTo(Question::class);
     }
 }

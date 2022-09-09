@@ -10,18 +10,18 @@ class Question extends Model
     use HasFactory;
     protected $fillable = ['question'];
 
-    public function quiz() 
+    public function quiz()
     {
         return $this->belongsTo(Quiz::class);
     }
 
-    public function choices() 
+    public function choices()
     {
         return $this->hasMany(Choice::class);
     }
 
-    public function answers() 
+    public function answer()
     {
-        return $this->hasMany(Answer::class);
+        return $this->hasOne(Answer::class);
     }
 }

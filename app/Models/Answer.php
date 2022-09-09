@@ -11,8 +11,8 @@ class Answer extends Model
 
     protected $fillable = [
         'question_id',
-        'quizlog_id',
         'choice_id',
+        'quizlog_id'
     ];
 
     public function question()
@@ -20,12 +20,7 @@ class Answer extends Model
         return $this->belongsTo(Question::class);
     }
 
-    public function quizlog()
-    {
-        return $this->belongsTo(Quizlog::class);
-    }
-
-    public function choice()
+    public function choice() 
     {
         return $this->belongsTo(Choice::class);
     }
