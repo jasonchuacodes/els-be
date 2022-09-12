@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('question_id');
             $table->foreignId('choice_id');
-            $table->foreignId('quiz_log_id');
+            $table->foreignId('quizlog_id');
             $table->timestamps();
         });
     }
