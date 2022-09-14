@@ -106,7 +106,7 @@ class DatabaseSeeder extends Seeder
                 ],
                 [
                     'question_id' => 2,
-                    'choice' => "ONE",
+                    'choice' => "FOUR",
                     'is_correct' => 0
                 ],
                 [

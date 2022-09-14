@@ -42,9 +42,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/{id}/followings', [FollowingController::class, 'followings']);
 
     // LESSON
+    Route::get('/quiz/all', [LessonController::class, 'fetchQuizzes']);
     Route::post('/quiz/attempt', [LessonController::class, 'attemptQuiz']);
-    Route::get('/quiz/questions', [LessonController::class, 'fetchQuizQuestions']);
-    Route::get('/quiz/question/choices', [LessonController::class, 'fetchQuestionChoices']);
-    Route::get('/quiz/results', [LessonController::class, 'fetchQuizResults']);
+    Route::get('/quizlog', [LessonController::class, 'fetchQuizlog']);
+    Route::get('/quiz/questions', [LessonController::class, 'fetchQuizQuestionsWithChoices']);
     Route::post('/question/answer', [LessonController::class, 'answerQuestionItem']);
+    Route::get('/quiz/{id}', [LessonController::class, 'fetchQuiz']);
+    Route::post('/save-all-answers', [LessonController::class, 'saveAllAnswers']);
+    Route::get('/quiz-results', [LessonController::class, 'fetchQuizResults']);
 }); 
