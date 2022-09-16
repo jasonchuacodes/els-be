@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activity;
 use App\Models\Answer;
 use App\Models\Choice;
 use App\Models\Question;
@@ -45,15 +46,16 @@ class LessonController extends Controller
     }
 
     // fetch set of questions based on quiz_id
-    public function fetchQuizlog(Request $request)
-    {
-        $quizlog = Quizlog::where('id', $request->quizlog_id)->get();
-        return response()->json($quizlog);
-    }
+    // public function fetchQuizlog(Request $request)
+    // {
+    //     $quizlog = Quizlog::where('id', $request->quizlog_id)->get();
+    //     return response()->json($quizlog);
+    // }
 
     public function fetchQuiz($id)
     {
-        $quiz = Quiz::find($id);
+        // $quiz = Quiz::find($id);
+        $quiz = Quiz::with('questions')->where('id', $id)->first();
 
         return response()->json($quiz);
     }
@@ -70,7 +72,17 @@ class LessonController extends Controller
     // saveAllAnswers
     public function saveAllAnswers(Request $request)
     {
-        $arr = $request->all();
+        $user = Auth::user();
+        $user_id = Auth::id();
+        $quiz = Quiz::find($request->quiz_id);
+        
+        Activity::create([
+            'activity' => $user->first_name . ' answered ' . $quiz->title,
+            'activitiable_id' => $user_id,
+            'activitiable_type' => 'App\Models\Answer'
+        ]);
+
+        $arr = $request->answers;
 
         foreach($arr as $item) {
             Answer::updateOrCreate(
@@ -90,12 +102,22 @@ class LessonController extends Controller
     // fetch quiz results
     public function fetchQuizResults(Request $request)
     {
+       
+
+        $answers = Answer::where('quizlog_id', $request->quizlog_id)
+        ->with('question')
+        ->with('choice')
+        ->get();
+    
+
         $correctAnswerCount = Answer::where('quizlog_id', $request->quizlog_id)
             ->whereHas('choice', function ($query) {
                 $query->where('is_correct', 1);
             })
             ->count();
+            
         $data = [
+            'answers' => $answers,
             'correct_answers' => $correctAnswerCount
         ];
 

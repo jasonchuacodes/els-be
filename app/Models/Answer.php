@@ -24,4 +24,8 @@ class Answer extends Model
     {
         return $this->belongsTo(Choice::class);
     }
+    public function activity()
+    {
+        return $this->morphMany(Activity::class, 'activitiable');
+    }
 }

@@ -24,6 +24,7 @@ class AuthController extends Controller
             'first_name' => $validated['first_name'],
             'last_name' => $validated['last_name'],
             'email' => $validated['email'],
+            'avatar' => 'https://joeschmoe.io/api/v1/' . $validated['first_name'],
             'password' => Hash::make($validated['password'])
         ]);
 

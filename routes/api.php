@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FollowingController;
 use App\Http\Controllers\LessonController;
@@ -50,4 +51,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/quiz/{id}', [LessonController::class, 'fetchQuiz']);
     Route::post('/save-all-answers', [LessonController::class, 'saveAllAnswers']);
     Route::get('/quiz-results', [LessonController::class, 'fetchQuizResults']);
+
+    //ACTIVITY
+    Route::get('/activities', [ActivityController::class, 'fetchUserActivities']);
+    Route::get('/all-activities', [ActivityController::class, 'fetchAllUsersActivities']);
 }); 
