@@ -25,4 +25,5 @@ class Quizlog extends Model
     {
         return $this->hasMany(Answer::class);
     }
+   
 }

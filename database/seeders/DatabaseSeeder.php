@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
                     'first_name' => 'Jason',
                     'last_name' => 'Chua',
                     'email' => 'jason@gmail.com',
+                    'avatar' => 'https://joeschmoe.io/api/v1/jason',
                     'email_verified_at' => Carbon::now(),
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
@@ -44,6 +45,7 @@ class DatabaseSeeder extends Seeder
                     'first_name' => 'Abby',
                     'last_name' => 'Chua',
                     'email' => 'abby@gmail.com',
+                    'avatar' => 'https://joeschmoe.io/api/v1/abby',
                     'email_verified_at' => Carbon::now(),
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
@@ -53,6 +55,7 @@ class DatabaseSeeder extends Seeder
                     'first_name' => 'John',
                     'last_name' => 'Doe',
                     'email' => 'john@gmail.com',
+                    'avatar' => 'https://joeschmoe.io/api/v1/john',
                     'email_verified_at' => Carbon::now(),
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
@@ -138,27 +141,27 @@ class DatabaseSeeder extends Seeder
             ]
         );
         // QUIZLOGS
-        DB::table('quizlogs')->insert([
-            'user_id' => 1,
-            'quiz_id' => 1
-        ]);
+        // DB::table('quizlogs')->insert([
+        //     'user_id' => 1,
+        //     'quiz_id' => 1
+        // ]);
         // ANSWERS
-        DB::table('answers')->insert([
-            [
-                'question_id' => 1,
-                'quizlog_id' => 1,
-                'choice_id' => 2,
-            ],
-            [
-                'question_id' => 2,
-                'quizlog_id' => 1,
-                'choice_id' => 3
-            ],
-            [
-                'question_id' => 3,
-                'quizlog_id' => 1,
-                'choice_id' => 1,
-            ],
-        ]);
+        // DB::table('answers')->insert([
+        //     [
+        //         'question_id' => 1,
+        //         'quizlog_id' => 1,
+        //         'choice_id' => 2,
+        //     ],
+        //     [
+        //         'question_id' => 2,
+        //         'quizlog_id' => 1,
+        //         'choice_id' => 3
+        //     ],
+        //     [
+        //         'question_id' => 3,
+        //         'quizlog_id' => 1,
+        //         'choice_id' => 1,
+        //     ],
+        // ]);
     }
 }
