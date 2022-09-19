@@ -1,64 +1,93 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Jason's ELS Project
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This ELS Project is a Learning Management System built to showcase what I have learned during the training phase in Sun Asterisk.
+ 
+ 
+## Built with
+* PHP
+* Laravel
+* MySQL
 
-## About Laravel
+The notable learnings that I had in creating this project is working with the MVC model in Laravel. 
+I learned how to setup controllers, create CRUD functions, and how to work with model relationships to fetch and post data into the database.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Description
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+The main functionalities that are implemented in the LMS app are the following:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+#### Auth
+* user_registration
+* user_email_verification with Mailtrap
+* user_authentication
 
-## Learning Laravel
+#### Lesson
+* display lesson categories and description from database
+* auth_user taking lessons
+* auth_user answering question_set
+* auth_user display lesson question_set score
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+#### Follow
+* auth_user follow/unfollow users
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+#### Activity
+* lesson_activity log
+* follow_activity log
+* display user_activity logs
 
-## Laravel Sponsors
+#### Admin 
+To be added in future update:
+  * lessons - add, edit, delete lesson info
+  * users - add, edit, delete user info
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Getting Started
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### Installing
 
-## Contributing
+* Download the .zip file at the github repo or clone by running the command 
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+`git clone git@github.com:jasonchuacodes/els-be.git`
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Executing program
 
-## Security Vulnerabilities
+#### Prerequisites
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+* create the MySQL database and name it as `els_db`
 
-## License
+* go to the els-be directory `cd els-be` 
+* setup the `.env` file 
+`DB_DATABASE = els_db`
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+* setup the credentials for Mailtrap:
+```
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=<mailtrap_username>
+MAIL_PASSWORD=<mailtrap_password>
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="hello@example.com"
+MAIL_FROM_NAME="${APP_NAME}" 
+```
+* create the tables and seed by running the command
+`php artisan migrate --seed`
+
+* finally, run the command
+`php artisan serve`
+
+
+## Authors
+
+Contributors names and contact info
+
+Jason Clyde Chua [@jasonclchua](https://facebook.com/jasonclchua)
+
+## Acknowledgments
+
+Special thanks to my mentors who have taught me the skills on how to solve various problems while I was in the process of developing this app.
+
+* John Paul Banera
+* Joshua Escarilla
+* Ejanton Potot
+* Jeremiah Caballero
