@@ -9,7 +9,7 @@ This ELS Project is a Learning Management System built to showcase what I have l
 * MySQL
 
 The notable learnings that I had in creating this project is working with the MVC model in Laravel. 
-I learned how to setup controllers, create CRUD functions, and how to work with model relationships to fetch and post data into the database.
+I learned how to use Laravel Sanctum for user authentication, create CRUD functions for the Laravel Controller, and work with Laravel model relationships to create REST APIs for fetching and posting data to the database.
 
 ## Description
 
